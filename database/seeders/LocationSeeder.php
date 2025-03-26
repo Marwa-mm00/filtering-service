@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Job;
 use App\Models\Location;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -20,6 +21,10 @@ class LocationSeeder extends Seeder
         ];
         foreach ($locations as $location) {
             Location::create($location);
+        }
+
+        for ($i = 1; $i <= 10; $i++) {
+            Job::find($i)->locations()->attach(rand(1, 3));
         }
 
     }

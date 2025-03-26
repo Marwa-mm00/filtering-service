@@ -17,15 +17,13 @@ class AttributeSeeder extends Seeder
     public function run(): void
     {
         $attributes = [
-            ['name' => 'Work Permit Required', 'type' => 'boolean'],
-            ['name' => 'Shift Timing', 'type' => 'select', 'options' => json_encode(['Morning', 'Evening', 'Night'])],
-            ['name' => 'Required Certifications', 'type' => 'text'],
-            ['name' => 'Technical Assessment Required', 'type' => 'boolean'],
-            ['name' => 'Work Environment', 'type' => 'select', 'options' => json_encode(['Office', 'Hybrid', 'Remote'])],
-            ['name' => 'Equipment Provided', 'type' => 'boolean'],
-            ['name' => 'Contract Duration', 'type' => 'number'],
-            ['name' => 'Probation Period', 'type' => 'number'],
-            ['name' => 'Visa Sponsorship', 'type' => 'boolean']
+            ['name' => 'work_permit_required', 'type' => 'boolean'],
+            ['name' => 'shift', 'type' => 'select', 'options' => json_encode(['Morning', 'Evening', 'Night'])],
+            ['name' => 'certifications', 'type' => 'text'],
+            ['name' => 'environment', 'type' => 'select', 'options' => json_encode(['Office', 'Hybrid', 'Remote'])],
+            ['name' => 'contract_duration', 'type' => 'number'],
+            ['name' => 'probation_period', 'type' => 'number'],
+            ['name' => 'start_date', 'type' => 'date']
         ];
         foreach ($attributes as $attribute) {
             Attribute::create($attribute);

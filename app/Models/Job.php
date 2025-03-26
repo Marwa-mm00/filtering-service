@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Queue\Events\JobAttempted;
 
 class Job extends Model
 {
@@ -21,5 +22,10 @@ class Job extends Model
     public function locations()
     {
         return $this->belongsToMany(Location::class);
+    }
+
+    public function attributes()
+    {
+        return $this->hasMany(JobAttributeValue::class);
     }
 }
