@@ -50,13 +50,15 @@ class FilterParserTest extends TestCase
 
     public function test_it_parses_attribute_conditions()
     {
-        $filter = 'AND[attribute::name{LIKE}(John), attribute::description{LIKE}(test)]';
+        $filter = 'AND[attribute::name{LIKE}(John), attribute::description{LIKE}(test)]OR[attribute::salary>2000]';
         $expected = [
             'AND' => [
                 ['field' => 'attribute::name', 'operator' => 'like', 'value' => 'John'],
                 ['field' => 'attribute::description', 'operator' => 'like', 'value' => 'test']
             ],
-            'OR' => []
+            'OR' => [
+                ['field' => 'attribute::salary', 'operator' => '>', 'value' => '2000']
+            ]
         ];
         $this->assertEquals($expected, FilterParser::parse($filter));
     }
@@ -124,15 +126,19 @@ class FilterParserTest extends TestCase
         $this->assertEquals($expected, FilterParser::parse($filter));
     }
 
+
     public function test_it_parses_relation_conditions()
     {
-        $filter = 'AND[locations{IS_ANY}(test,test2),languages{HAS_ANY}(test)]';
+        $filter = 'AND[locations.city{IS_ANY}(test,test2),languages.name{HAS_ANY}(test)]
+        OR[categories.name{NOT_ANY}(test)]';
         $expected = [
             'AND' => [
-                ['field' => 'locations', 'operator' => 'is_any', 'value' => ['test', 'test2']],
-                ['field' => 'languages', 'operator' => 'has_any', 'value' => 'test']
+                ['field' => 'locations.city', 'operator' => 'is_any', 'value' => ['test', 'test2']],
+                ['field' => 'languages.name', 'operator' => 'has_any', 'value' => 'test']
             ],
-            'OR' => []
+            'OR' => [
+                ['field' => 'categories.name', 'operator' => 'not_any', 'value' => 'test']
+            ]
         ];
 
         $this->assertEquals($expected, FilterParser::parse($filter));

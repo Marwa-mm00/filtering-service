@@ -19,8 +19,7 @@ class FilterParser
             $logicType = $group[1]; // AND or OR
             $conditions = $group[2];
 
-            // Matches field=val, field{OPERATOR}(val1, val2)
-            preg_match_all('/(?:([\w:]+))?(?:{([\w_]+)})?\(([^)]+)\)|([\w:]+)(!=|=|>|<)([^,\]]+)/', $conditions, $matches, PREG_SET_ORDER);
+            preg_match_all('/([\w:.]+)(?:{([\w_]+)})?\(([^)]+)\)|([\w:.]+)(!=|=|>|<)([^,\]]+)/', $conditions, $matches, PREG_SET_ORDER);
 
             foreach ($matches as $match) {
                 if (!empty($match[1])) { // Handles `field{OPERATOR}(values)`

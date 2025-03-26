@@ -18,7 +18,7 @@ class AttributeSeeder extends Seeder
     {
         $attributes = [
             ['name' => 'work_permit_required', 'type' => 'boolean'],
-            ['name' => 'shift', 'type' => 'select', 'options' => json_encode(['Morning', 'Evening', 'Night'])],
+            ['name' => 'shift', 'type' => 'select', 'options' => json_encode(['Morning Shift', 'Evening Shift', 'Night Shift'])],
             ['name' => 'certifications', 'type' => 'text'],
             ['name' => 'environment', 'type' => 'select', 'options' => json_encode(['Office', 'Hybrid', 'Remote'])],
             ['name' => 'contract_duration', 'type' => 'number'],
