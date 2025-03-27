@@ -15,7 +15,7 @@ This Laravel project provides an API endpoint to filter job listings dynamically
 1. Clone the repository:
    ```sh
    git clone https://github.com/Marwa-mm00/filtering-service.git
-   cd <project-directory>
+   cd filtering-service
    ```
 
 2. Install dependencies:
